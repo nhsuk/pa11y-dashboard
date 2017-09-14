@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+    database:
+        build:
+          context: ~/code/pa11y-db/
+        ports:
+          - 27017:27017
+
+    dashboard:
+        build:
+            context: .
+
+        ports:
+            - 80:80
+            - 3000:3000
+
+        environment:
+            WEBSERVICE_DATABASE: mongodb://database/pa11y
+
+        links:
+            - database
