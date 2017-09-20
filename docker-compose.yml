@@ -12,7 +12,7 @@ services:
             context: .
 
         ports:
-            - 80:80
+            - 3333:3333
             - 3000:3000
 
         environment:

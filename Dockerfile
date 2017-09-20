@@ -1,10 +1,10 @@
 FROM node:4
 
 ENV NODE_ENV=production \
-    PORT=80 \
+    PORT=3333 \
     WEBSERVICE_CRON="0 30 0 * * *"
 
-CMD READONLY=true node index.js
+CMD node index.js
 
 RUN mkdir -p /app && \
     cd /app && \

@@ -2,7 +2,6 @@
 
 A Docker container that runs [pa11y-dashboard](https://github.com/pa11y/dashboard).
 
-Build and run with `docker-compose`:
+Build and run with `./scripts/start`:
 
-    docker-compose build
-    docker-compose up
+View dashboard at `http://localhost:3333`
