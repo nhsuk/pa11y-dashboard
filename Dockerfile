@@ -4,8 +4,6 @@ ENV NODE_ENV=production \
     PORT=3333 \
     WEBSERVICE_CRON="0 30 0 * * *"
 
-CMD node index.js
-
 RUN mkdir -p /app && \
     cd /app && \
     curl https://codeload.github.com/pa11y/dashboard/tar.gz/2.2.2 | \
@@ -17,3 +15,5 @@ WORKDIR /app
 RUN npm install && \
     npm install -g phantomjs && \
     true
+
+CMD node index.js
