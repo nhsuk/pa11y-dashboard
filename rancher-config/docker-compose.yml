@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+    image: "nhsuk/pa11y-dashboard:${DOCKER_IMAGE_TAG}"
+    database:
+        image: mongo:3.3
+    dashboard:
+        build:
+            context: .
+        ports:
+            - 3333:3333
+            - 3000:3000
+        environment:
+            WEBSERVICE_DATABASE: mongodb:${MONGODB_URL}
+        links:
+            - database
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: $TRAEFIK_RULE
+      traefik.backend: ${RANCHER_STACK_NAME}-pa11y-dashboard
+      traefik.port: 3000
+      prometheus.port: 3000
+      prometheus.monitoring: true
+      io.rancher.container.pull_image: always
+    logging:
+      driver: splunk
+      options:
+        splunk-url: ${SPLUNK_HEC_URL}
+        splunk-token: ${SPLUNK_HEC_TOKEN}
+        splunk-insecureskipverify: "true"
+        splunk-sourcetype: docker
+        splunk-source: pa11y-dashboard
+        splunk-verify-connection: "false"
+        tag: "{{`{{.ImageName}} {{.Name}} {{.FullID}}`}}"
+        splunk-format: json
