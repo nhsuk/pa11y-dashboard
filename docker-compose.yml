@@ -2,10 +2,7 @@ version: '2'
 
 services:
     database:
-        build:
-          context: ~/code/pa11y-db/
-        ports:
-          - 27017:27017
+        image: mongo:3.3
 
     dashboard:
         build:
@@ -16,7 +13,7 @@ services:
             - 3000:3000
 
         environment:
-            WEBSERVICE_DATABASE: mongodb://database/pa11y
+            
 
         links:
             - database
