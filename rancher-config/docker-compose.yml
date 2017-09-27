@@ -3,10 +3,6 @@ version: '2'
 services:
     pa11y-dashboard:
       image: "nhsuk/pa11y-dashboard:${DOCKER_IMAGE_TAG}"
-      build:
-        context: .
-      ports:
-        - 3333:3333
       environment:
         WEBSERVICE_DATABASE: mongodb:${MONGODB_URL}
       labels:
