@@ -5,6 +5,7 @@ services:
       image: "nhsuk/pa11y-dashboard:${DOCKER_IMAGE_TAG}"
       environment:
         WEBSERVICE_DATABASE: mongodb:${MONGODB_URL}
+        WEBSERVICE_CRON: "0 30 0 * * *"
       labels:
         traefik.enable: true
         traefik.frontend.rule: $TRAEFIK_RULE
