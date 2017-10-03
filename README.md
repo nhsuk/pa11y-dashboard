@@ -3,7 +3,7 @@
 A Docker container that runs [pa11y-dashboard](https://github.com/pa11y/dashboard).
 
 ## Development
-Build and run with `./scripts/start`:
+Build and run with `./scripts/start`
 
 View dashboard at `http://localhost:3333`
 
