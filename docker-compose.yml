@@ -1,19 +1,18 @@
-version: '2'
+version: '2.1'
 
 services:
-    database:
-        image: mongo:3.3
+  database:
+    image: mongo:3.3
 
-    dashboard:
-        build:
-            context: .
+  dashboard:
+    build:
+      context: .
+    ports:
+      - 3333:3333
+      - 3000:3000
+    environment:
+      WEBSERVICE_DATABASE: mongodb://database/pa11y
+      READONLY: ${READONLY-true}
 
-        ports:
-            - 3333:3333
-            - 3000:3000
-
-        environment:
-            WEBSERVICE_DATABASE: mongodb://database/pa11y
-
-        links:
-            - database
+    links:
+      - database

@@ -16,4 +16,4 @@ RUN npm install && \
     npm install -g phantomjs && \
     true
 
-CMD READONLY=true node index.js
+CMD node index.js
